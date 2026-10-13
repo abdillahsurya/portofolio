@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- EDIT: ganti judul dan deskripsi (tampil di tab browser & hasil pencarian) -->
+    <title>SURYABDL – Web Developer</title>
+    <meta
+      name="description"
+      content="Portofolio Nama Kamu, web developer yang membuat situs cepat dan mudah dipakai."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --bg: #f2f5f8;
+        --ink: #14213d;
+        --muted: #52607a;
+        --line: #c9d3e3;
+        --accent: #2b50d8;
+        --accent-soft: #dde6f7;
+        --display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+        --body: "Newsreader", Georgia, "Times New Roman", serif;
+      }
+      :root:not([data-theme="light"]) {
+        color-scheme: light dark;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #0f1626;
+          --ink: #e8edf7;
+          --muted: #9aa8c4;
+          --line: #2a3857;
+          --accent: #7f9bff;
+          --accent-soft: #1b2a4f;
+        }
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: var(--body);
+        font-size: 1.125rem;
+        line-height: 1.65;
+      }
+
+      a {
+        color: var(--accent);
+        text-underline-offset: 3px;
+      }
+      a:hover {
+        text-decoration-thickness: 2px;
+      }
+      :focus-visible {
+        outline: 3px solid var(--accent);
+        outline-offset: 3px;
+        border-radius: 2px;
+      }
+
+      .wrap {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+      }
+
+      /* Navigasi */
+      header.top {
+        padding: 1.5rem 0;
+      }
+      header.top .wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+      .mark {
+        font-family: var(--display);
+        font-weight: 700;
+        color: var(--ink);
+        text-decoration: none;
+      }
+      nav a {
+        font-family: var(--display);
+        font-weight: 500;
+        font-size: 1rem;
+        margin-left: 1.25rem;
+        color: var(--muted);
+        text-decoration: none;
+      }
+      nav a:hover {
+        color: var(--accent);
+      }
+
+      /* Hero: nama sebagai elemen utama */
+      .hero {
+        padding: clamp(3rem, 10vw, 7rem) 0 clamp(2.5rem, 7vw, 5rem);
+      }
+      .hero h1 {
+        font-family: var(--display);
+        font-weight: 700;
+        font-size: clamp(2.8rem, 10vw, 6.5rem);
+        line-height: 0.98;
+        letter-spacing: -0.03em;
+        margin: 0 0 1.5rem;
+      }
+      .hero p.lead {
+        font-size: clamp(1.25rem, 3vw, 1.6rem);
+        max-width: 34em;
+        margin: 0 0 2rem;
+        color: var(--muted);
+      }
+      .hero .cta {
+        display: inline-block;
+        font-family: var(--display);
+        font-weight: 500;
+        background: var(--accent);
+        color: var(--bg);
+        padding: 0.75rem 1.4rem;
+        border-radius: 999px;
+        text-decoration: none;
+      }
+      .hero .cta:hover {
+        filter: brightness(1.1);
+      }
+
+      section {
+        padding: 3rem 0;
+        border-top: 1px solid var(--line);
+      }
+      h2 {
+        font-family: var(--display);
+        font-weight: 700;
+        font-size: 1.75rem;
+        letter-spacing: -0.01em;
+        margin: 0 0 1.75rem;
+      }
+
+      /* Tentang */
+      .about p {
+        max-width: 38em;
+        margin: 0 0 1rem;
+      }
+
+      /* Proyek: daftar baris, bukan kartu seragam */
+      .project {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.35rem;
+        padding: 1.5rem 0;
+        border-top: 1px solid var(--line);
+      }
+      .project:first-of-type {
+        border-top: 0;
+        padding-top: 0;
+      }
+      .project h3 {
+        font-family: var(--display);
+        font-size: 1.4rem;
+        margin: 0;
+      }
+      .project h3 a {
+        color: var(--ink);
+        text-decoration: none;
+      }
+      .project h3 a:hover {
+        color: var(--accent);
+        text-decoration: underline;
+      }
+      .project p {
+        margin: 0;
+        max-width: 38em;
+      }
+      .project .stack {
+        font-style: italic;
+        color: var(--muted);
+        font-size: 1rem;
+      }
+      .project .links a {
+        margin-right: 1rem;
+        font-family: var(--display);
+        font-size: 1rem;
+      }
+
+      /* Keahlian */
+      .skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .skills li {
+        background: var(--accent-soft);
+        padding: 0.3rem 0.9rem;
+        border-radius: 999px;
+        font-family: var(--display);
+        font-weight: 500;
+        font-size: 1rem;
+      }
+
+      /* Kontak */
+      .contact a.mail {
+        font-family: var(--display);
+        font-weight: 700;
+        font-size: clamp(1.4rem, 5vw, 2.2rem);
+        word-break: break-all;
+      }
+      .contact ul {
+        list-style: none;
+        padding: 0;
+        margin: 1.5rem 0 0;
+        display: flex;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        font-family: var(--display);
+      }
+
+      footer {
+        padding: 2rem 0 3rem;
+        color: var(--muted);
+        font-size: 1rem;
+        border-top: 1px solid var(--line);
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="top">
+      <div class="wrap">
+        <!-- EDIT: nama singkat / inisial -->
+        <a class="mark" href="#">suryabdl</a>
+        <nav aria-label="Navigasi utama">
+          <a href="#tentang">Tentang</a>
+          <a href="#proyek">Proyek</a>
+          <a href="#keahlian">Keahlian</a>
+          <a href="#kontak">Kontak</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="wrap">
+        <!-- HERO -->
+        <div class="hero">
+          <!-- EDIT: nama lengkap dan profesi -->
+          <h1>Halo, saya Surya Abdillah.</h1>
+          <p class="lead">
+            Saya web developer yang membuat situs cepat, rapi, dan mudah
+            dipakai. Saat ini terbuka untuk proyek freelance dan kerja penuh
+            waktu.
+          </p>
+          <a class="cta" href="#proyek">Lihat proyek saya</a>
+        </div>
+
+        <!-- TENTANG -->
+        <section id="tentang" class="about">
+          <h2>Tentang saya</h2>
+          <!-- EDIT: ceritakan siapa kamu, latar belakang, dan apa yang kamu kerjakan -->
+          <p>
+            Saya lulusan Teknik Informatika yang tertarik pada pengembangan web.
+            Saya suka mengubah ide menjadi produk yang berfungsi, dari rancangan
+            awal sampai dipakai orang.
+          </p>
+          <p>
+            Di luar pekerjaan, saya suka merakit alat IoT dan membuat Website.
+          </p>
+        </section>
+
+        <!-- PROYEK -->
+        <section id="proyek">
+          <h2>Proyek</h2>
+
+          <!-- EDIT: salin blok <article> ini untuk menambah proyek -->
+          <article class="project">
+            <h3>
+              <a href="https://github.com/abdillahsurya/suryabdl"
+                >Nama Proyek Pertama</a
+              >
+            </h3>
+            <p>
+              Jelaskan dalam 1–2 kalimat: apa proyeknya, masalah apa yang
+              diselesaikan, dan peran kamu.
+            </p>
+            <span class="stack">HTML, CSS, JavaScript</span>
+            <span class="links">
+              <a href="https://abdillahsurya.github.io/suryabdl">Lihat demo</a>
+              <a href="https://github.com/abdillahsurya/suryabdl"
+                >Kode di GitHub</a
+              >
+            </span>
+          </article>
+
+          <article class="project">
+            <h3>
+              <a href="https://github.com/USERNAME/proyek-2"
+                >Nama Proyek Kedua</a
+              >
+            </h3>
+            <p>
+              Jelaskan proyek kedua di sini. Sebutkan hasil nyatanya jika ada,
+              misalnya jumlah pengguna atau waktu yang dihemat.
+            </p>
+            <span class="stack">React, Node.js</span>
+            <span class="links">
+              <a href="https://github.com/USERNAME/proyek-2">Kode di GitHub</a>
+            </span>
+          </article>
+
+          <article class="project">
+            <h3>
+              <a href="https://github.com/USERNAME/proyek-3"
+                >Nama Proyek Ketiga</a
+              >
+            </h3>
+            <p>Jelaskan proyek ketiga di sini.</p>
+            <span class="stack">Python, Flask</span>
+            <span class="links">
+              <a href="https://github.com/USERNAME/proyek-3">Kode di GitHub</a>
+            </span>
+          </article>
+        </section>
+
+        <!-- KEAHLIAN -->
+        <section id="keahlian">
+          <h2>Keahlian</h2>
+          <!-- EDIT: ganti dengan keahlian kamu -->
+          <ul class="skills">
+            <li>HTML &amp; CSS</li>
+            <li>JavaScript</li>
+            <li>React</li>
+            <li>Git &amp; GitHub</li>
+            <li>Desain responsif</li>
+            <li>Python</li>
+          </ul>
+        </section>
+
+        <!-- KONTAK -->
+        <section id="kontak" class="contact">
+          <h2>Kontak</h2>
+          <p>Punya proyek atau lowongan? Kirim email, saya balas secepatnya.</p>
+          <!-- EDIT: email dan tautan sosial -->
+          <a class="mail" href="mailto:abdillahsurya2004@gmail.com"
+            >abdillahsurya2004@gmail.com</a
+          >
+          <ul>
+            <li><a href="https://github.com/abdillahsurya">GitHub</a></li>
+          </ul>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <!-- EDIT: tahun dan nama -->
+        © 2026 Suryabdl
+      </div>
+    </footer>
+  </body>
+</html>
