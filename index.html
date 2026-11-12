@@ -3,104 +3,118 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- EDIT: judul dan deskripsi (tampil di tab browser dan hasil pencarian Google) -->
-  <title>Surya Abdillah </title>
+  <title>Surya Abdillah | IoT &amp; Embedded Developer</title>
   <meta name="description" content="Portofolio Surya Abdillah: proyek IoT dengan Arduino dan ESP32, dari kontrol akses RFID sampai kendali servo lewat HP.">
   <meta name="theme-color" content="#FFFCFA">
+  <meta property="og:title" content="Surya Abdillah | IoT &amp; Embedded Developer">
+  <meta property="og:description" content="Proyek IoT dengan Arduino dan ESP32. Coba demo interaktifnya.">
+  <meta property="og:type" content="website">
+  <!-- EDIT: tambahkan og:image (1200x630) dan og:url setelah punya domain -->
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔌</text></svg>">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Surya Abdillah","jobTitle":"IoT & Embedded Developer","url":"https://github.com/abdillahsurya","email":"abdillahsurya2004@gmail.com"}</script>
 
-  <!-- Menandai bahwa JavaScript aktif (dipakai untuk animasi muncul saat scroll) -->
-  <script>document.documentElement.classList.add('js');</script>
+  <!-- Tema diterapkan sebelum render agar tidak berkedip -->
+  <script>
+    document.documentElement.classList.add('js');
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
   <a class="skip-link" href="#proyek">Lompat ke proyek</a>
+  <div class="progress" id="progress" aria-hidden="true"></div>
 
-  <!-- ================= NAVBAR ================= -->
   <header class="site-header" id="header">
     <div class="container nav">
-      <!-- EDIT: inisial namamu -->
       <a class="logo" href="#beranda" aria-label="Beranda">SA<span>.</span></a>
-
       <button class="nav-toggle" id="navToggle" aria-label="Buka menu" aria-expanded="false" aria-controls="navLinks">
         <i class="bi bi-list" aria-hidden="true"></i>
       </button>
-
       <ul class="nav-links" id="navLinks">
         <li><a href="#beranda" class="active">Beranda</a></li>
         <li><a href="#tentang">Tentang</a></li>
         <li><a href="#keahlian">Keahlian</a></li>
         <li><a href="#proyek">Proyek</a></li>
         <li><a href="#pengalaman">Pengalaman</a></li>
+        <li><a href="#proses">Proses</a></li>
         <li><a href="#kontak">Kontak</a></li>
+        <li><button class="theme-toggle" id="themeToggle" aria-label="Ganti tema" aria-pressed="false"><i class="bi bi-moon-stars" aria-hidden="true"></i></button></li>
         <li><a class="btn btn-dark" href="#kontak">Hubungi Saya <i class="bi bi-arrow-right" aria-hidden="true"></i></a></li>
       </ul>
     </div>
   </header>
 
   <main>
-    <!-- ================= HERO ================= -->
+    <!-- HERO -->
     <section class="hero" id="beranda">
       <div class="container hero-grid">
         <div class="hero-text reveal">
           <p class="hello">Halo, saya</p>
-          <!-- EDIT: nama depan (hitam) dan nama belakang (oranye) -->
           <h1>Surya <span class="accent">Abdillah</span></h1>
-          <p class="role">Pembuat Perangkat IoT dan Sistem Tertanam</p>
-          <!-- EDIT: kalimat perkenalan -->
+          <p class="role"><span id="typed">Pembuat Perangkat IoT</span><span class="caret" aria-hidden="true"></span></p>
           <p class="intro">Saya membangun perangkat yang terhubung, dari rangkaian di atas meja sampai kendali lewat HP. Dari ide sampai alat yang benar-benar bekerja.</p>
           <div class="hero-actions">
             <a class="btn btn-orange" href="#proyek">Lihat Proyek <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
-            <!-- Mau tombol Unduh CV? Taruh file cv.pdf di repo, lalu ganti href ke "cv.pdf" dan teksnya jadi "Unduh CV" -->
             <a class="btn btn-outline" href="https://github.com/abdillahsurya" target="_blank" rel="noopener"><i class="bi bi-github" aria-hidden="true"></i> Lihat GitHub</a>
           </div>
+          <p class="hint"><i class="bi bi-hand-index" aria-hidden="true"></i> Coba demo interaktif di bagian Proyek</p>
         </div>
 
         <div class="hero-art reveal">
           <svg viewBox="0 0 520 380" role="img" aria-label="Ilustrasi meja kerja dengan laptop, papan ESP32 yang memancarkan sinyal Wi-Fi, dan servo">
-            <!-- lampu gantung -->
             <path class="il-line" d="M150 0 V70"/>
             <path class="il-white" d="M112 112 Q112 70 150 70 Q188 70 188 112 Z"/>
-            <ellipse class="il-fill-orange" cx="150" cy="120" rx="10" ry="6"/>
+            <ellipse class="il-fill-orange glow" cx="150" cy="120" rx="10" ry="6"/>
             <path class="il-ray" d="M150 134 V148 M132 130 L124 142 M168 130 L176 142"/>
-            <!-- rak, buku, tanaman -->
             <path class="il-line il-thick" d="M350 96 H500"/>
             <rect class="il-white" x="362" y="52" width="14" height="44" rx="2"/>
             <rect class="il-orange" x="379" y="44" width="14" height="52" rx="2"/>
             <rect class="il-white" x="396" y="56" width="14" height="40" rx="2"/>
             <path class="il-orange" d="M448 72 H484 L478 96 H454 Z"/>
             <path class="il-line" d="M466 72 C466 52 456 46 450 40 M466 72 C466 50 476 44 484 38 M466 72 V36"/>
-            <!-- meja -->
             <path class="il-line il-thick" d="M30 330 H500"/>
-            <!-- laptop -->
             <rect class="il-white" x="70" y="198" width="190" height="120" rx="8"/>
             <path class="il-ray" d="M92 224 H140 M92 244 H180 M92 264 H120 M92 284 H160"/>
             <path class="il-line" d="M150 224 H210 M190 244 H228 M132 264 H200 M172 284 H212"/>
             <rect class="il-black" x="52" y="318" width="226" height="12" rx="6"/>
-            <!-- papan ESP32 + sinyal Wi-Fi -->
             <rect class="il-white" x="310" y="296" width="120" height="34" rx="4"/>
             <rect class="il-black" x="346" y="304" width="36" height="18" rx="2"/>
             <circle class="il-fill-orange" cx="370" cy="282" r="5"/>
-            <path class="il-wifi" d="M356.2 268.4 A18 18 0 0 1 383.8 268.4"/>
-            <path class="il-wifi" d="M345.5 259.4 A32 32 0 0 1 394.5 259.4"/>
-            <path class="il-wifi" d="M334.8 250.4 A46 46 0 0 1 405.2 250.4"/>
-            <!-- servo -->
+            <path class="il-wifi w1" d="M356.2 268.4 A18 18 0 0 1 383.8 268.4"/>
+            <path class="il-wifi w2" d="M345.5 259.4 A32 32 0 0 1 394.5 259.4"/>
+            <path class="il-wifi w3" d="M334.8 250.4 A46 46 0 0 1 405.2 250.4"/>
             <rect class="il-orange" x="440" y="296" width="52" height="34" rx="4"/>
             <circle class="il-black" cx="478" cy="296" r="6"/>
-            <path class="il-arm" d="M478 296 L500 266"/>
+            <path class="il-arm hero-arm" d="M478 296 L500 266"/>
           </svg>
         </div>
       </div>
     </section>
 
-    <!-- ================= TENTANG ================= -->
+    <!-- STATISTIK -->
+    <section class="stats" aria-label="Ringkasan">
+      <div class="container">
+        <ul class="stat-list reveal">
+          <li><strong data-count="3">3</strong><span>Proyek di GitHub</span></li>
+          <li><strong data-count="2">2</strong><span>Platform: Arduino dan ESP32</span></li>
+          <li><strong data-count="2023">2023</strong><span>Mulai kuliah Informatika</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- TENTANG -->
     <section class="section" id="tentang">
       <div class="container about-grid">
         <div class="about-art reveal">
@@ -113,16 +127,15 @@
             <rect class="il-white" x="256" y="198" width="108" height="24" rx="3"/>
             <rect class="il-orange" x="290" y="166" width="40" height="32" rx="4"/>
             <path class="il-line" d="M330 174 q14 0 14 12 q0 10 -14 10"/>
-            <path class="il-line" d="M300 154 q-6 -10 0 -18 M314 154 q-6 -10 0 -18"/>
+            <path class="il-line steam" d="M300 154 q-6 -10 0 -18 M314 154 q-6 -10 0 -18"/>
             <rect class="il-white" x="60" y="238" width="130" height="32" rx="4"/>
             <rect class="il-black" x="96" y="244" width="38" height="20" rx="2"/>
-            <circle class="il-fill-orange" cx="164" cy="254" r="5"/>
+            <circle class="il-fill-orange blink" cx="164" cy="254" r="5"/>
           </svg>
         </div>
-
         <div class="about-text reveal">
           <h2 class="section-title">Tentang Saya</h2>
-          <!-- EDIT: ceritakan siapa kamu, latar belakang, dan tujuanmu -->
+          <!-- EDIT: ganti dengan cerita spesifikmu (pemicu tertarik IoT, proyek tersulit, target karier) -->
           <p>Saya tertarik pada Internet of Things dan Website. Saya senang mengubah ide menjadi alat yang bisa dipakai langsung: merangkai komponen, menulis program, lalu menghubungkannya ke aplikasi di HP.</p>
           <ul class="traits">
             <li><i class="bi bi-lightbulb" aria-hidden="true"></i> Suka Memecahkan Masalah</li>
@@ -136,23 +149,23 @@
       </div>
     </section>
 
-    <!-- ================= KEAHLIAN ================= -->
+    <!-- KEAHLIAN: klik untuk menyorot proyek terkait -->
     <section class="section" id="keahlian">
       <div class="container">
         <h2 class="section-title reveal">Keahlian dan Teknologi</h2>
-        <!-- EDIT: sesuaikan dengan kemampuanmu. Ikon lain: icons.getbootstrap.com -->
-        <ul class="skills reveal">
-          <li><i class="bi bi-cpu" aria-hidden="true"></i><span>Arduino</span></li>
-          <li><i class="bi bi-wifi" aria-hidden="true"></i><span>ESP32</span></li>
-          <li><i class="bi bi-code-slash" aria-hidden="true"></i><span>C/C++</span></li>
-          <li><i class="bi bi-filetype-html" aria-hidden="true"></i><span>HTML dan CSS</span></li>
-          <li><i class="bi bi-cloud" aria-hidden="true"></i><span>Blynk IoT</span></li>
-          <li><i class="bi bi-github" aria-hidden="true"></i><span>Git dan GitHub</span></li>
+        <p class="section-note reveal">Klik salah satu untuk melihat proyek yang memakainya.</p>
+        <ul class="skills reveal" id="skills">
+          <li><button type="button" data-skill="arduino" aria-pressed="false"><i class="bi bi-cpu" aria-hidden="true"></i><span>Arduino</span></button></li>
+          <li><button type="button" data-skill="esp32" aria-pressed="false"><i class="bi bi-wifi" aria-hidden="true"></i><span>ESP32</span></button></li>
+          <li><button type="button" data-skill="cpp" aria-pressed="false"><i class="bi bi-code-slash" aria-hidden="true"></i><span>C/C++</span></button></li>
+          <li><button type="button" data-skill="web" aria-pressed="false"><i class="bi bi-filetype-html" aria-hidden="true"></i><span>HTML dan CSS</span></button></li>
+          <li><button type="button" data-skill="blynk" aria-pressed="false"><i class="bi bi-cloud" aria-hidden="true"></i><span>Blynk IoT</span></button></li>
+          <li><button type="button" data-skill="git" aria-pressed="false"><i class="bi bi-github" aria-hidden="true"></i><span>Git dan GitHub</span></button></li>
         </ul>
       </div>
     </section>
 
-    <!-- ================= PROYEK ================= -->
+    <!-- PROYEK -->
     <section class="section" id="proyek">
       <div class="container">
         <div class="section-head reveal">
@@ -160,97 +173,110 @@
           <a class="link-more" href="https://github.com/abdillahsurya?tab=repositories" target="_blank" rel="noopener">Lihat semua proyek <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
         </div>
 
+        <div class="filters reveal" role="group" aria-label="Filter proyek">
+          <button class="chip active" data-filter="all" aria-pressed="true">Semua</button>
+          <button class="chip" data-filter="iot" aria-pressed="false">IoT</button>
+          <button class="chip" data-filter="web" aria-pressed="false">Web</button>
+        </div>
+
         <div class="cards">
-          <!-- PROYEK 1 -->
-          <article class="card reveal">
+          <!-- PROYEK 1: demo RFID -->
+          <article class="card reveal" data-cat="iot" data-skills="arduino cpp git">
             <div class="card-visual tint-peach">
-              <!-- Mau pakai foto asli? Ganti seluruh <svg> ini dengan: <img src="rfid.jpg" alt="Rangkaian sistem kontrol akses RFID"> -->
-              <svg viewBox="0 0 320 200" role="img" aria-label="Ilustrasi kartu RFID didekatkan ke pembaca, layar LCD menampilkan Akses diterima">
+              <svg viewBox="0 0 320 200" role="img" aria-label="Ilustrasi kartu RFID didekatkan ke pembaca dan layar LCD">
                 <rect class="il-white" x="24" y="30" width="96" height="110" rx="10"/>
                 <circle class="il-line" cx="72" cy="85" r="14"/>
                 <circle class="il-orange" cx="96" cy="124" r="5"/>
-                <path class="il-wifi" d="M137 74.3 A14 14 0 0 1 137 95.7"/>
-                <path class="il-wifi" d="M143.4 66.6 A24 24 0 0 1 143.4 103.4"/>
-                <path class="il-wifi" d="M149.9 59 A34 34 0 0 1 149.9 111"/>
-                <rect class="il-orange" x="200" y="52" width="96" height="60" rx="8"/>
-                <rect class="il-white" x="212" y="66" width="22" height="16" rx="3"/>
-                <path class="il-line" d="M212 98 H268"/>
-                <rect class="il-black" x="80" y="156" width="160" height="34" rx="6"/>
-                <text class="il-text-white" x="160" y="178" text-anchor="middle">Akses diterima!</text>
+                <g class="rfid-waves">
+                  <path class="il-wifi" d="M137 74.3 A14 14 0 0 1 137 95.7"/>
+                  <path class="il-wifi" d="M143.4 66.6 A24 24 0 0 1 143.4 103.4"/>
+                  <path class="il-wifi" d="M149.9 59 A34 34 0 0 1 149.9 111"/>
+                </g>
+                <g id="rfidCard" class="rfid-card">
+                  <rect class="il-orange" x="200" y="52" width="96" height="60" rx="8"/>
+                  <rect class="il-white" x="212" y="66" width="22" height="16" rx="3"/>
+                  <path class="il-line" d="M212 98 H268"/>
+                </g>
+                <rect class="il-black" id="lcdBox" x="80" y="156" width="160" height="34" rx="6"/>
+                <text class="il-text-white" id="lcdText" x="160" y="178" text-anchor="middle">Tempelkan kartu...</text>
               </svg>
             </div>
             <div class="card-body">
-              <!-- EDIT: pastikan alamat repo sama persis dengan nama repo di GitHub -->
               <h3><a href="https://github.com/abdillahsurya/rfid-acces-control" target="_blank" rel="noopener">Kontrol Akses RFID <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a></h3>
               <p>Hanya kartu terdaftar yang mengaktifkan relay (misalnya kunci pintu). Status tampil di LCD dan LED.</p>
+              <div class="demo rfid-demo" aria-label="Simulasi RFID">
+                <button type="button" class="btn-mini" data-tap="ok"><i class="bi bi-credit-card-2-front" aria-hidden="true"></i> Kartu terdaftar</button>
+                <button type="button" class="btn-mini ghost" data-tap="no"><i class="bi bi-x-octagon" aria-hidden="true"></i> Kartu asing</button>
+              </div>
               <ul class="tags"><li>Arduino</li><li>MFRC522</li><li>LCD I2C</li></ul>
             </div>
           </article>
 
-          <!-- PROYEK 2 -->
-          <article class="card reveal">
+          <!-- PROYEK 2: demo servo -->
+          <article class="card reveal" data-cat="iot" data-skills="esp32 blynk cpp git">
             <div class="card-visual tint-cool">
-              <!-- Mau pakai foto asli? Ganti seluruh <svg> ini dengan: <img src="servo.jpg" alt="Rangkaian ESP32 dan servo yang dikendalikan lewat Blynk"> -->
               <svg viewBox="0 0 320 200" role="img" aria-label="Ilustrasi HP mengirim perintah lewat Wi-Fi ke ESP32 yang menggerakkan servo">
                 <rect class="il-white" x="24" y="34" width="60" height="120" rx="12"/>
                 <path class="il-line" d="M46 46 H62"/>
                 <rect class="il-orange" x="38" y="86" width="32" height="16" rx="8"/>
                 <circle class="il-white-sm" cx="62" cy="94" r="5"/>
-                <path class="il-wifi" d="M103.7 84.8 A12 12 0 0 1 103.7 103.2"/>
-                <path class="il-wifi" d="M110.1 77.1 A22 22 0 0 1 110.1 110.9"/>
-                <path class="il-wifi" d="M116.6 69.5 A32 32 0 0 1 116.6 118.5"/>
+                <path class="il-wifi w1" d="M103.7 84.8 A12 12 0 0 1 103.7 103.2"/>
+                <path class="il-wifi w2" d="M110.1 77.1 A22 22 0 0 1 110.1 110.9"/>
+                <path class="il-wifi w3" d="M116.6 69.5 A32 32 0 0 1 116.6 118.5"/>
                 <rect class="il-white" x="140" y="64" width="68" height="60" rx="6"/>
                 <path class="il-line" d="M154 64 v-8 M168 64 v-8 M182 64 v-8 M196 64 v-8 M154 124 v8 M168 124 v8 M182 124 v8 M196 124 v8"/>
                 <text class="il-text" x="174" y="99" text-anchor="middle">ESP32</text>
                 <path class="il-line" d="M208 94 H236"/>
                 <rect class="il-orange" x="236" y="82" width="52" height="40" rx="5"/>
+                <path class="il-arm servo-arm" d="M270 82 L270 44"/>
                 <circle class="il-black" cx="270" cy="82" r="6"/>
-                <path class="il-arm" d="M270 82 L298 54"/>
               </svg>
             </div>
             <div class="card-body">
               <h3><a href="https://github.com/abdillahsurya/esp32-blynk-servo-control" target="_blank" rel="noopener">Kendali Servo dengan ESP32 <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a></h3>
               <p>Servo digerakkan dari HP lewat Wi-Fi dan aplikasi Blynk, ke 0° atau 180° dari mana saja.</p>
+              <div class="demo servo-demo">
+                <label for="servoRange">Gerakkan servo: <strong id="servoAngle">90°</strong></label>
+                <input type="range" id="servoRange" min="0" max="180" value="90">
+              </div>
               <ul class="tags"><li>ESP32</li><li>Blynk</li><li>Servo</li></ul>
             </div>
           </article>
 
           <!-- PROYEK 3 -->
-          <article class="card reveal">
+          <article class="card reveal" data-cat="web" data-skills="web git">
             <div class="card-visual tint-peach">
-              <!-- Mau pakai screenshot asli? Ganti seluruh <svg> ini dengan: <img src="web-kas.jpg" alt="Tampilan aplikasi web kas"> -->
               <svg viewBox="0 0 320 200" role="img" aria-label="Ilustrasi jendela browser berisi grafik batang dan daftar catatan kas">
                 <rect class="il-white" x="40" y="26" width="240" height="148" rx="10"/>
                 <path class="il-line" d="M40 54 H280"/>
                 <circle class="il-fill-orange" cx="56" cy="40" r="4"/>
                 <circle class="il-black" cx="70" cy="40" r="4"/>
                 <circle class="il-black" cx="84" cy="40" r="4"/>
-                <rect class="il-orange" x="64" y="112" width="22" height="44" rx="3"/>
-                <rect class="il-orange" x="96" y="88" width="22" height="68" rx="3"/>
-                <rect class="il-orange" x="128" y="102" width="22" height="54" rx="3"/>
+                <rect class="il-orange bar" x="64" y="112" width="22" height="44" rx="3"/>
+                <rect class="il-orange bar" x="96" y="88" width="22" height="68" rx="3"/>
+                <rect class="il-orange bar" x="128" y="102" width="22" height="54" rx="3"/>
                 <path class="il-line" d="M58 156 H160"/>
                 <path class="il-line" d="M184 80 H256 M184 102 H256 M184 124 H236"/>
                 <circle class="il-orange" cx="248" cy="146" r="12"/>
               </svg>
             </div>
             <div class="card-body">
-              <!-- EDIT: pastikan alamat repo sama persis dengan nama repo di GitHub -->
               <h3><a href="https://github.com/abdillahsurya/web-kas-org" target="_blank" rel="noopener">Web Kas <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a></h3>
-              <!-- EDIT: ganti dengan deskripsi aslinya (apa fungsinya, untuk siapa, apa yang kamu kerjakan) -->
+              <!-- EDIT: ganti dengan deskripsi asli (fungsi, untuk siapa, bagian yang kamu kerjakan) -->
               <p>Aplikasi web untuk mencatat dan memantau kas.</p>
-              <!-- EDIT: ganti dengan teknologi yang kamu pakai, misalnya HTML, PHP, MySQL -->
+              <!-- EDIT: ganti dengan teknologi yang dipakai -->
               <ul class="tags"><li>Aplikasi web</li><li>Pencatatan kas</li></ul>
             </div>
           </article>
         </div>
+        <p class="empty" id="empty" hidden>Belum ada proyek di kategori ini.</p>
       </div>
     </section>
 
-    <!-- ================= PENGALAMAN ================= -->
+    <!-- PENGALAMAN -->
     <section class="section" id="pengalaman">
       <div class="container">
         <h2 class="section-title reveal">Pengalaman dan Pendidikan</h2>
-        <!-- EDIT: ganti "20XX", nama sekolah/kampus, dan teks lain sesuai keadaanmu -->
         <ol class="timeline reveal">
           <li>
             <span class="tl-icon"><i class="bi bi-mortarboard" aria-hidden="true"></i></span>
@@ -277,7 +303,7 @@
       </div>
     </section>
 
-    <!-- ================= PROSES KERJA ================= -->
+    <!-- PROSES -->
     <section class="section" id="proses">
       <div class="container">
         <h2 class="section-title reveal">Proses Kerja Saya</h2>
@@ -292,32 +318,32 @@
     </section>
   </main>
 
-  <!-- ================= KONTAK / FOOTER ================= -->
+  <!-- KONTAK -->
   <footer class="site-footer" id="kontak">
     <div class="container footer-grid">
       <div class="footer-cta">
         <h2>Ayo bangun sesuatu yang bermanfaat <span class="accent">bersama.</span></h2>
       </div>
-
       <ul class="contact-list">
-        <!-- EDIT: ganti dengan emailmu -->
-        <li><i class="bi bi-envelope" aria-hidden="true"></i> <a href="mailto:abdillahsurya2004@gmail.com">abdillahsurya2004@gmail.com</a></li>
+        <li><i class="bi bi-envelope" aria-hidden="true"></i> <a href="mailto:abdillahsurya2004@gmail.com" id="emailText">abdillahsurya2004@gmail.com</a>
+          <button type="button" class="copy" id="copyEmail" aria-label="Salin email"><i class="bi bi-clipboard" aria-hidden="true"></i></button></li>
         <li><i class="bi bi-github" aria-hidden="true"></i> <a href="https://github.com/abdillahsurya" target="_blank" rel="noopener">github.com/abdillahsurya</a></li>
       </ul>
-
       <div class="connect">
         <p>Terhubung</p>
         <div class="social">
           <a href="https://github.com/abdillahsurya" target="_blank" rel="noopener" aria-label="GitHub"><i class="bi bi-github" aria-hidden="true"></i></a>
-          <a href="mailto:emailkamu@example.com" aria-label="Email"><i class="bi bi-envelope" aria-hidden="true"></i></a>
-          <!-- EDIT: aktifkan baris di bawah jika sudah punya LinkedIn (hapus tanda komentar) dan ganti USERNAME
-          <a href="https://www.linkedin.com/in/USERNAME" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin" aria-hidden="true"></i></a>
-          -->
+          <a href="mailto:abdillahsurya2004@gmail.com" aria-label="Email"><i class="bi bi-envelope" aria-hidden="true"></i></a>
+          <!-- LinkedIn: hapus komentar dan ganti USERNAME
+          <a href="https://www.linkedin.com/in/USERNAME" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin" aria-hidden="true"></i></a> -->
         </div>
       </div>
     </div>
-    <p class="copyright">© <span id="year">2026</span> Surya. Hak cipta dilindungi.</p>
+    <p class="copyright">© <span id="year">2026</span> Surya Abdillah. Hak cipta dilindungi.</p>
   </footer>
+
+  <button class="to-top" id="toTop" aria-label="Kembali ke atas"><i class="bi bi-arrow-up" aria-hidden="true"></i></button>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script src="script.js" defer></script>
 </body>
